@@ -83,7 +83,7 @@ ALTER TABLE utilisateurs ADD FOREIGN KEY (emailadministrateur) REFERENCES admini
 
 ALTER TABLE personnel ADD FOREIGN KEY (idprofil) REFERENCES profil(idprofil);
 
-ALTER TABLE rendezvous ADD FOREIGN KEY (idclient) REFERENCES personnel(idclient);
-ALTER TABLE rendezvous ADD FOREIGN KEY (idpersonnel) REFERENCES client(idpersonnel);
+ALTER TABLE rendezvous ADD FOREIGN KEY (idclient) REFERENCES client(idclient);
+ALTER TABLE rendezvous ADD FOREIGN KEY (idpersonnel) REFERENCES personnel(idpersonnel);
 
 ALTER TABLE calendrier ADD FOREIGN KEY (idpersonnel) REFERENCES personnel(idpersonnel);

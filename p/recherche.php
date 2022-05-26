@@ -76,8 +76,8 @@
     <header>
       <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     </header>
-    <!--footer-->
-    <footer class="page-footer">
+    <!--footer retirer le fixed bottom si besoin-->
+    <footer class="page-footer fixed-bottom">
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-12 ml-auto">

@@ -72,9 +72,111 @@
       </div>
     </nav>
     <!--header a supprimer pour mettre en forme la page-->
-    <header>
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-    </header>
+    <body>
+    <br><br><br><br>
+        <div class="container">
+            <div class="navbar">
+                <!--La classe bg-info ajoute un fond bleu à l'élément-->
+                <div class="col dropdown">
+                  <button class="dropbtn">Médecine générale</button>
+                  <div class="dropdown-content">
+                  <?php
+//identifier votre BDD
+$database = "omnessante";
+//identifier votre serveur (localhost), utlisateur (root), mot de passe ("")
+$db_handle = mysqli_connect('localhost', 'root', '');
+$db_found = mysqli_select_db($db_handle, $database);
+$sql = "";
+//Si la BDD existe
+if ($db_found) {
+    $sql = 'SELECT * FROM `personnel` WHERE `specialite`="generaliste"; ';
+
+    $result = mysqli_query($db_handle, $sql);
+    if (mysqli_num_rows($result)==0) {
+        echo "pas de médecins trouvés";
+    } else {
+        while ($data = mysqli_fetch_assoc($result)) {
+            $id=$data['idpersonnel'];
+            $nom=$data['nom'];
+            $prenom=$data['prenom'];
+            echo '<a href="#">'.$nom.' '.$prenom.'</a>';
+        }
+    }
+}
+mysqli_close($db_handle);
+?>
+                  </div>
+                </div> 
+                <!--La classe bg-warning ajoute un fond jaune à l'élément-->
+                <div class="col dropdown">
+                  <button class="dropbtn">Médecins spécialistes</button>
+                  <div class="dropdown-content">
+                  <?php
+//identifier votre BDD
+$database = "omnessante";
+//identifier votre serveur (localhost), utlisateur (root), mot de passe ("")
+$db_handle = mysqli_connect('localhost', 'root', '');
+$db_found = mysqli_select_db($db_handle, $database);
+$sql = "";
+//Si la BDD existe
+if ($db_found) {
+    $sql = 'SELECT * FROM `personnel` WHERE `emailpersonnel` LIKE "med%" AND `specialite` NOT LIKE "gener%";  ';
+
+    $result = mysqli_query($db_handle, $sql);
+    if (mysqli_num_rows($result)==0) {
+        echo "pas de médecins trouvés";
+    } else {
+        while ($data = mysqli_fetch_assoc($result)) {
+            $id=$data['idpersonnel'];
+            $nom=$data['nom'];
+            $prenom=$data['prenom'];
+            $specialite=$data['specialite'];
+            echo '<a href="#">'.$specialite.' : '.$nom.' '.$prenom.'</a>';
+        }
+    }
+}
+mysqli_close($db_handle);
+?>
+                  </div>
+                </div> 
+                <!--La classe bg-success ajoute un fond vert à l'élément-->
+                <div class="col dropdown">
+                  <button class="dropbtn">Laboratoire de biologie médicale</button>
+                  <div class="dropdown-content">
+                  <?php
+//identifier votre BDD
+$database = "omnessante";
+//identifier votre serveur (localhost), utlisateur (root), mot de passe ("")
+$db_handle = mysqli_connect('localhost', 'root', '');
+$db_found = mysqli_select_db($db_handle, $database);
+$sql = "";
+//Si la BDD existe
+if ($db_found) {
+    $sql = 'SELECT * FROM `personnel` WHERE `emailpersonnel` LIKE "serv%";  ';
+
+    $result = mysqli_query($db_handle, $sql);
+    if (mysqli_num_rows($result)==0) {
+        echo "pas de médecins trouvés";
+    } else {
+        while ($data = mysqli_fetch_assoc($result)) {
+            $id=$data['idpersonnel'];
+            $specialite=$data['specialite'];
+            echo '<a href="#">'.$specialite.'</a>';
+        }
+    }
+}
+mysqli_close($db_handle);
+?>
+                  </div>
+                </div> 
+            </div>
+        </div>
+        <?php
+        for ($x = 0; $x < 50; $x++) {
+            echo '</br>';
+        }
+        ?>
+    </body>
     <!--footer-->
     <footer class="page-footer">
       <div class="container">

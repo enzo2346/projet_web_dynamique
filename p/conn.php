@@ -10,8 +10,6 @@ $db_handle = mysqli_connect('localhost', 'root', '');
 $db_found = mysqli_select_db($db_handle, $database);
 $login = isset($_POST["login"])? $_POST["login"] : "";
 $mdp = isset($_POST["passw"])? $_POST["passw"] : "";
-//$_SESSION["identifiant"]=$login;
-//$_SESSION["mdp"]=$mdp;
 if (empty($login)) {
     $login = 0;
 }
