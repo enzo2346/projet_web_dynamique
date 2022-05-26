@@ -1,7 +1,14 @@
+<?php
+  session_start();
+  if ($_SESSION['email'] == "") {
+      header('Location: connexion.php?erreur=6');
+  }
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Omnes Santé Votre Compte</title>
+    <title>Omnes Santé Recherche</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="css\styles.css" />
@@ -35,21 +42,21 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="main-navigation">
-        <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="Acceuil.html">Accueil</a>
+            <a class="nav-link" href="Acceuil.php">Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="toutparcourir.html">Tout Parcourir</a>
+            <a class="nav-link" href="toutparcourir.php">Tout Parcourir</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="recherche.html">Recherche</a>
+            <a class="nav-link" href="recherche.php">Recherche</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="rendezvous.html">Rendez-Vous</a>
+            <a class="nav-link" href="rendezvous.php">Rendez-Vous</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="votrecompte.html">Mon Compte</a>
+            <a class="nav-link" href="votrecompte.php">Mon Compte</a>
           </li>
         </ul>
         <ul class="navbar-nav">
@@ -57,7 +64,7 @@
             <a
               type="button"
               class="btn-outline-light mb-2 btn btn-light mb-2"
-              href="deconnexion.html"
+              href="deconnexion.php"
             >
               Déconnexion
             </a>

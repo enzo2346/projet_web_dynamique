@@ -1,7 +1,13 @@
+<?php
+  session_start();
+  if ($_SESSION['email'] == "") {
+      header('Location: connexion.php?erreur=6');
+  }
+?>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Omnes Santé Accueil</title>
+    <title>Omnes Santé Votre Compte</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="css\styles.css" />
@@ -21,17 +27,11 @@
     </script>
   </head>
   <body>
-    <!--script pour facebook-->
-    <script
-      async
-      defer
-      crossorigin="anonymous"
-      src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v13.0"
-      nonce="1D2KuBxf"
-    ></script>
     <!--menu-->
     <nav class="navbar navbar-expand-md fixed-top">
-      <a class="navbar-brand" href="#haut"><img src="images/logo.jpg" alt="Logo"></a>
+      <a class="navbar-brand" href="#haut"
+        ><img src="images/logo.jpg" alt="Logo"
+      /></a>
       <button
         class="navbar-toggler navbar-dark"
         type="button"
@@ -41,21 +41,21 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="main-navigation">
-        <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="Acceuil.html">Accueil</a>
+            <a class="nav-link" href="Acceuil.php">Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="toutparcourir.html">Tout Parcourir</a>
+            <a class="nav-link" href="toutparcourir.php">Tout Parcourir</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="recherche.html">Recherche</a>
+            <a class="nav-link" href="recherche.php">Recherche</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="rendezvous.html">Rendez-Vous</a>
+            <a class="nav-link" href="rendezvous.php">Rendez-Vous</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="votrecompte.html">Mon Compte</a>
+            <a class="nav-link" href="votrecompte.php">Mon Compte</a>
           </li>
         </ul>
         <ul class="navbar-nav">
@@ -63,7 +63,7 @@
             <a
               type="button"
               class="btn-outline-light mb-2 btn btn-light mb-2"
-              href="deconnexion.html"
+              href="deconnexion.php"
             >
               Déconnexion
             </a>
@@ -71,49 +71,10 @@
         </ul>
       </div>
     </nav>
-    <!--Titre plus description omnes santé-->
-    <header class="page-header header container-fluid">
-      <div class="overlay"></div>
-      <div class="description">
-        <h1>Omnes Santé : La plus grande communauté de medecin en ligne</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-          interdum quam odio, quis placerat ante luctus eu. Sed aliquet dolor id
-          sapien rutrum, id vulputate quam iaculis. Suspendisse consectetur mi
-          id libero fringilla, in pharetra sem ullamcorper.
-        </p>
-      </div>
+    <!--header a supprimer pour mettre en forme la page-->
+    <header>
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     </header>
-    <!--api facebook a remplacer par twitter-->
-    <div
-      class="fb-page"
-      data-href="https://www.facebook.com/ECE.Paris"
-      data-tabs="timeline, events"
-      data-width=""
-      data-height=""
-      data-small-header="true"
-      data-adapt-container-width="true"
-      data-hide-cover="false"
-      data-show-facepile="false"
-    >
-      <blockquote
-        cite="https://www.facebook.com/ECE.Paris"
-        class="fb-xfbml-parse-ignore"
-      >
-        <a href="https://www.facebook.com/ECE.Paris"
-          >ECE Ecole d&#039;ingénieurs.Engineering school</a
-        >
-      </blockquote>
-    </div>
-    <!--lien vers carrousel.html pour afficher le carrousel dans cette page-->
-    <iframe
-      id="serviceFrameSend"
-      src="carrousel.html"
-      width="1920"
-      height="1000"
-      frameborder="0"
-    >
-    </iframe>
     <!--footer-->
     <footer class="page-footer">
       <div class="container">
@@ -145,7 +106,6 @@
               +33 01 03 02 05 04
             </p>
           </div>
-          
         </div>
       </div>
     </footer>

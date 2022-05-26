@@ -105,6 +105,10 @@ body {
   padding: 40px 0;
 }
 
-.navbar-brand img{
-  max-height:45px;
+.navbar-brand img {
+  max-height: 45px;
+}
+
+.twitter {
+  text-align: center;
 }

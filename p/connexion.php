@@ -1,3 +1,8 @@
+<?php
+  //start session
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -21,6 +26,10 @@
     </script>
   </head>
   <body>
+    <?php
+    $_SESSION["email"]="";
+    $_SESSION["mdp"]="";
+    ?>  
     <!--menu-->
     <nav class="navbar navbar-expand-md fixed-top">
       <a class="navbar-brand" href="#haut"
@@ -57,23 +66,37 @@
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5 text-black">
 
-                <form>
+                <form action="conn.php" method="post">
 
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Connectez-vous à votre compte</h5>
 
                   <div class="form-outline mb-4">
-                    <input type="email" id="form2Example17" class="form-control form-control-lg" />
+                    <input type="email" id="form2Example17" class="form-control form-control-lg" name="login" />
                     <label class="form-label" for="form2Example17">Adresse mail</label>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                    <input type="password" id="form2Example27" class="form-control form-control-lg" name="passw"/>
                     <label class="form-label" for="form2Example27">Mot de passe</label>
                   </div>
 
                   <div class="pt-1 mb-4">
-                    <button class="btn btn-dark btn-lg btn-block" type="button">Connexion</button>
+                    <button class="btn btn-dark btn-lg btn-block" type="submit" name="Valider">Connexion</button>
                   </div>
+                  <?php
+                      if (isset($_GET['erreur'])) {
+                          $err = $_GET['erreur'];
+                          if ($err==1) {
+                              echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+                          }
+                          if ($err==2) {
+                              echo "<p style='color:red'>Requete non fonctionnelle</p>";
+                          }
+                          if ($err==3) {
+                              echo "<p style='color:red'>Connexion a la bdd impossible</p>";
+                          }
+                      }
+                  ?>
 
                   <a class="small text-muted" href="#!">Mot de passe oublié ? </a>
                   <p class=" pb-lg-2" style="color: #393f81;">Vous n'avez pas de compte ? <a href="#!"

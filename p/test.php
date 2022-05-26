@@ -1,47 +1,43 @@
 <html>
 <head>
     <title>Mon super emploi du temps</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="css\styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $(".header").height($(window).height());
+      });
+    </script>
     <style type="text/css">
-        caption /* Titre du tableau */
-        {
-           margin: auto; /* Centre le titre du tableau */
-           font-size: 1.2em;
-           color: #009900;
-           margin-bottom: 20px; /* Pour éviter que le titre ne soit trop collé au tableau en-dessous */
-        }
- 
-        table /* Le tableau en lui-même */
-        {
-           margin: auto; /* Centre le tableau */
-           border-collapse: collapse; /* Colle les bordures entre elles */
-           width:100%;
-        }
         th /* Les cellules d'en-tête */
         {
-           background-color: blue;
-           color: white;
-           font-size: 1.1em;
-           border:1px solid white;
+            border: 1px solid #9ec2f8;
+            background-color: #9ec2f8;
+            border-radius: 0;
+            color: #fff;
+            text-align: center;
         }
- 
         td /* Les cellules normales */
         {
-            font-size:0.8em;
-           border: 1px solid black;
+           font-size:0.8em;
+           border: 2px solid #B4B4B4;
            font-family: Verdana, "Trebuchet MS", Times, "Times New Roman", serif;
            text-align: center; /* Tous les textes des cellules seront centrés*/
            padding: 5px; /* Petite marge intérieure aux cellules pour éviter que le texte touche les bordures */
            height:25px;
            width:200px;
         }
-        td.time
-        {
-            font-size:1em;
-            height:50px;
-            width:100px;
-        }
-    </style>
- 
+        </style>
 </head>
 <body>
 <table>
@@ -65,7 +61,9 @@
             }
             echo "<td>";
             if (!isset($rdv[$jour[$i]][$heure])) {
-                echo '<input type="button" Value="bouton">';
+                echo '<a type="button" class="btn-outline-primary mb-2 btn btn-light mb-2" href="#">'.$heure.'</a>';
+            } else {
+                echo '<a type="button" class="btn-outline-dark mb-2 btn btn-dark mb-2">'.$heure.'</a>';
             }
             echo "</td>";
         }
