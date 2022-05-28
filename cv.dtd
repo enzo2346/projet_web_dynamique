@@ -1,0 +1,19 @@
+<!ELEMENT cv(identite, mail, telephone, specialite, experiences, formations, competences)>
+
+<!ELEMENT identite(nom, prenom)>
+<!ELEMENT nom(#PCDATA)>
+<!ELEMENT prenom(#PCDATA)>
+<!ELEMENT mail(#PCDATA)>
+<!ELEMENT telephone(#PCDATA)>
+<!ELEMENT specialite(#PCDATA)>
+<!ELEMENT experiences(experience+)>
+<!ELEMENT experience(date, etablissement)>
+<!ELEMENT date(#PCDATA)>
+<!ELEMENT etablissement(#PCDATA)>
+<!ELEMENT formations(formation+)>
+<!ELEMENT formation(date, diplome, etablissement)>
+<!ELEMENT date(#PCDATA)>
+<!ELEMENT diplome(#PCDATA)>
+<!ELEMENT etablissement(#PCDATA)>
+<!ELEMENT competences(competence+)>
+<!ELEMENT competence(#PCDATA)>

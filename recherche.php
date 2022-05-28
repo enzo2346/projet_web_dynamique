@@ -3,6 +3,7 @@
   if ($_SESSION['email'] == "") {
       header('Location: connexion.php?erreur=6');
   }
+  $_SESSION['page'] = "recherche";
 ?>
 
 <!DOCTYPE html>
@@ -72,14 +73,54 @@
     <br><br><br>
     <!--header a supprimer pour mettre en forme la page-->
     <div style="text-align: center;">
-    <input type="text" name="entree" />
-    <select class="form-select btn btn-light" aria-label="Default select example">
+    <form action="recherche.php" method="post">
+      <input type="text" name="recherche" placeholder="Recherche">
+    <select class="form-select btn btn-light" aria-label="Default select example" name="choix" required>
       <option selected>Nom ou Spécialité ou Etablissement</option>
-      <option value="1">Nom</option>
-      <option value="2">Spécialité</option>
-      <option value="3">Etablissement</option>
+      <option name="NSE" value="nom">Nom</option>
+      <option name="NSE" value="specialite">Spécialité</option>
+      <option name="NSE" value="etablisement">Etablissement</option>
     </select>
-    <input type="submit" value="Rechercher" class="btn btn-primary" /></div>
+    <input type="submit" name="Rechercher" value="Rechercher" class="btn btn-primary" /></form></div>
+    <?php
+    if (!empty($_POST['Rechercher'])) {
+        if (!empty($_POST['recherche']) && ($_POST['choix']!="Nom ou Spécialité ou Etablissement")) {
+            $r = $_POST['recherche'];
+            //identifier votre BDD
+            $database = "omnessante";
+            //identifier votre serveur (localhost), utlisateur (root), mot de passe ("")
+            $db_handle = mysqli_connect('localhost', 'root', '');
+            $db_found = mysqli_select_db($db_handle, $database);
+            $sql = "";
+            //Si la BDD existe
+            if ($db_found) {
+                if ($_POST['choix']=="nom") {
+                    $sql = "SELECT * FROM personnel WHERE nom LIKE '%$r%'";
+                } elseif ($_POST['choix']=="specialite") {
+                    $sql = "SELECT * FROM personnel WHERE specialite LIKE '%$r%'";
+                } elseif ($_POST['choix']=="etablisement") {
+                    $sql = 'SELECT * FROM `personnel` WHERE `emailpersonnel` LIKE "serv%";  ';
+                }
+                $result = mysqli_query($db_handle, $sql);
+                $nbr = mysqli_num_rows($result);
+                if ($nbr==0) {
+                    echo "Aucun résultat";
+                } else {
+                    while ($data = mysqli_fetch_assoc($result)) {
+                        $id=$data['idpersonnel'];
+                        $nom=$data['nom'];
+                        $prenom=$data['prenom'];
+                        $specialite=$data['specialite'];
+                        echo '<form action="cartedocteur.php" method="post"><div style="text-align: center;margin: 15px;"><button type="submit" name="id" value="'.$id.'" class="btn btn-outline-primary">'.$specialite.' : '.$nom.' '.$prenom.'</button></div></form>';
+                    }
+                }
+            } else {
+                echo "Database not found";
+            }
+            mysqli_close($db_handle);
+        }
+    }
+    ?>
     <!--footer retirer le fixed bottom si besoin-->
     <footer class="page-footer fixed-bottom">
       <div class="container">

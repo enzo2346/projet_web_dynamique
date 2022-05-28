@@ -117,7 +117,13 @@ if ($db_found) {
     echo "erreur bdd pas trouvee";
 }
 mysqli_close($db_handle);
-echo '<form action="toutparcourir.php" method="post"><div class= col-lg-12><button type="submit" name="your_name" value="your_value" class="btn btn-primary">Retour</button></div></form><br>';
+if ($_SESSION['page']=="toutparcourir") {
+    echo '<form action="toutparcourir.php" method="post"><div class= col-lg-12><button type="submit" name="your_name" value="your_value" class="btn btn-primary">Retour</button></div></form><br>';
+}
+if ($_SESSION['page']=="recherche") {
+    echo '<form action="recherche.php" method="post"><div class= col-lg-12><button type="submit" name="your_name" value="your_value" class="btn btn-primary">Retour</button></div></form><br>';
+}
+//echo '<form action="toutparcourir.php" method="post"><div class= col-lg-12><button type="submit" name="your_name" value="your_value" class="btn btn-primary">Retour</button></div></form><br>';
 echo '<form action="prendrerdv.php" method="post"><div class= col-lg-12><button type="submit" name="id" value="'.$id.'" class="btn btn-primary">Prendre un rendez-vous</button></div></form><br>';
 echo '<form action="communcation.php" method="post"><div class= col-lg-12><button type="submit" name="your_name" value="your_value" class="btn btn-primary">Communiquer avec le médecin</button></div></form><br>';
 echo '<form action="cv.php" method="post"><div class= col-lg-12><button type="submit" name="your_name" value="your_value" class="btn btn-primary">Voir son cv</button></div></form></div></br></br>';

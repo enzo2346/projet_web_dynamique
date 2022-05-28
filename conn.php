@@ -64,10 +64,54 @@ if ($db_found) {
             }
         }
         if ($_SESSION["typ"]==2) {
-            header('Location: personnel.html');
+            $email = $_SESSION["email"];
+            $sql = "SELECT * FROM `personnel` WHERE `emailpersonnel`='$email'; ";
+            if (mysqli_query($db_handle, $sql)) {
+                //echo "requete fonctionnelle.";
+            } else {
+                //echo "Requete non fonctionnelle.";
+                header('Location: connexion.php?erreur=5');
+            }
+            $result = mysqli_query($db_handle, $sql);
+            if (mysqli_num_rows($result)==0) {
+                header('Location: connexion.php?erreur=4');
+            } else {
+                while ($data = mysqli_fetch_assoc($result)) {
+                    $_SESSION["idpersonnel"]=$data['idpersonnel'];
+                    $_SESSION["emailpersonnel"]=$data['emailpersonnel'];
+                    $_SESSION["nom"]=$data['nom'];
+                    $_SESSION["prenom"]=$data['prenom'];
+                    $_SESSION["specialite"]=$data['specialite'];
+                    $_SESSION["telephone"]=$data['telephone'];
+                    $_SESSION["salle"]=$data['salle'];
+                    $_SESSION["teams"]=$data['teams'];
+                    $_SESSION['idprofil']=$data['idprofil'];
+                }
+                header('Location: Acceuilpersonnel.php');
+            }
         }
         if ($_SESSION["typ"]==3) {
-            header('Location: admin.html');
+            $email = $_SESSION["email"];
+            $sql = "SELECT * FROM `administrateur` WHERE `emailadministrateur`='$email'; ";
+            if (mysqli_query($db_handle, $sql)) {
+                //echo "requete fonctionnelle.";
+            } else {
+                //echo "Requete non fonctionnelle.";
+                header('Location: connexion.php?erreur=5');
+            }
+            $result = mysqli_query($db_handle, $sql);
+            if (mysqli_num_rows($result)==0) {
+                header('Location: connexion.php?erreur=4');
+            } else {
+                while ($data = mysqli_fetch_assoc($result)) {
+                    $_SESSION["idadmin"]=$data['idadmin'];
+                    $_SESSION["emailadministrateur"]=$data['emailadministrateur'];
+                    $_SESSION["nom"]=$data['nom'];
+                    $_SESSION["prenom"]=$data['prenom'];
+                    $_SESSION["teams"]=$data['teams'];
+                }
+                header('Location: Acceuiladmin.php');
+            }
         }
     }
 } else {

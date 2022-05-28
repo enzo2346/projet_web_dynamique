@@ -4,10 +4,11 @@
       header('Location: connexion.php?erreur=6');
   }
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Omnes Santé Votre Compte</title>
+    <title>Omnes Santé Accueil</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="css\styles.css" />
@@ -16,10 +17,7 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
     <script type="text/javascript">
       $(document).ready(function () {
         $(".header").height($(window).height());
@@ -29,9 +27,7 @@
   <body>
     <!--menu-->
     <nav class="navbar navbar-expand-md fixed-top">
-      <a class="navbar-brand" href="#haut"
-        ><img src="images/logo.jpg" alt="Logo"
-      /></a>
+      <a class="navbar-brand" href="#haut"><img src="images/logo.jpg" alt="Logo"></a>
       <button
         class="navbar-toggler navbar-dark"
         type="button"
@@ -43,19 +39,16 @@
       <div class="collapse navbar-collapse" id="main-navigation">
       <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="Acceuil.php">Accueil</a>
+            <a class="nav-link" href="Acceuilpersonnel.php">Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="toutparcourir.php">Tout Parcourir</a>
+            <a class="nav-link" href="contactpersonnel.php">Chat</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="recherche.php">Recherche</a>
+            <a class="nav-link" href="rendezvouspersonnel.php">Rendez-Vous</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="rendezvous.php">Rendez-Vous</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="votrecompte.php">Mon Compte</a>
+            <a class="nav-link" href="votrecomptepersonnel.php">Mon Compte</a>
           </li>
         </ul>
         <ul class="navbar-nav">
@@ -71,50 +64,35 @@
         </ul>
       </div>
     </nav>
-    <!--header a supprimer pour mettre en forme la page-->
-    <br><br><br><br>
-    <!--header a supprimer pour mettre en forme la page-->
-   <form class="container-fluid">
-    <div class="col-md-12">
-      <label for="inputEmail4" class="form-label">Email :</label>
-      <label for="inputEmail4" class="form-label"> <?php echo $_SESSION["emailclient"]?></label>
-     </div>
-    <div class="col-md-12">
-     <label for="inputCity" class="form-label">Nom : </label>
-      <label for="inputCity" class="form-label"><?php echo $_SESSION["nom"]?></label>
+    <!--Titre plus description omnes santé-->
+    <header class="page-header header container-fluid">
+      <div class="overlay"></div>
+      <div class="description">
+        <h1>Omnes Santé : La plus grande communauté de medecin en ligne</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+          interdum quam odio, quis placerat ante luctus eu. Sed aliquet dolor id
+          sapien rutrum, id vulputate quam iaculis. Suspendisse consectetur mi
+          id libero fringilla, in pharetra sem ullamcorper.
+        </p>
+      </div>
+    </header>
+    <!--widget twitter-->
+    <div class="twitter">
+    <a class="twitter-timeline tw-align-center" data-width="1000" data-height="1000" href="https://twitter.com/BFMTV?ref_src=twsrc%5Etfw">Tweets by BFMTV</a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
-    <div class="col-md-12">
-     <label for="inputCity" class="form-label">Prenon : </label>
-      <label for="inputCity" class="form-label"> <?php echo $_SESSION["prenom"]?></label>
-    </div>
-    <div class="col-md-12">
-     <label for="inputAddress" class="form-label">Addresse : </label>
-     <label for="inputAddress" class="form-label"><?php echo $_SESSION["adresse"]?></label>
-  </div>
-  <div class="col-md-12">
-     <label for="inputAddress" class="form-label">Ville : </label>
-     <label for="inputAddress" class="form-label"><?php echo $_SESSION["ville"]?></label>
-  </div>
-  <div class="col-md-12">
-     <label for="inputAddress" class="form-label">Code Postal : </label>
-     <label for="inputAddress" class="form-label"><?php echo $_SESSION["codepostal"]?></label>
-  </div>
-  <div class="col-md-12">
-     <label for="inputAddress" class="form-label">Pays : </label>
-     <label for="inputAddress" class="form-label"><?php echo $_SESSION["pays"]?></label>
-  </div>
-  <div class="col-md-12">
-      <label for="inputEmail4" class="form-label">Téléphone : </label>
-      <label for="inputEmail4" class="form-label"><?php echo $_SESSION["telephone"]?></label>
-     </div>
-    <div class="col-md-12">
-      <label for="inputEmail4" class="form-label">Carte Vitale : </label>
-      <label for="inputEmail4" class="form-label"><?php echo $_SESSION["cartevitale"]?></label>
-     </div>
-      
-      
+    <!--lien vers carrousel.html pour afficher le carrousel dans cette page-->
+    <iframe
+      id="serviceFrameSend"
+      src="carrousel.html"
+      width="1920"
+      height="1000"
+      frameborder="0"
+    >
+    </iframe>
     <!--footer-->
-    <footer class="page-footer fixed-bottom">
+    <footer class="page-footer">
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-12 ml-auto">
@@ -144,6 +122,7 @@
               +33 01 03 02 05 04
             </p>
           </div>
+
         </div>
       </div>
     </footer>

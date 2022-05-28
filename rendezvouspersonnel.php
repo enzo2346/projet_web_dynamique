@@ -4,10 +4,11 @@
       header('Location: connexion.php?erreur=6');
   }
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Omnes Santé Votre Compte</title>
+    <title>Omnes Santé Accueil</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="css\styles.css" />
@@ -16,10 +17,7 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
     <script type="text/javascript">
       $(document).ready(function () {
         $(".header").height($(window).height());
@@ -29,9 +27,7 @@
   <body>
     <!--menu-->
     <nav class="navbar navbar-expand-md fixed-top">
-      <a class="navbar-brand" href="#haut"
-        ><img src="images/logo.jpg" alt="Logo"
-      /></a>
+      <a class="navbar-brand" href="#haut"><img src="images/logo.jpg" alt="Logo"></a>
       <button
         class="navbar-toggler navbar-dark"
         type="button"
@@ -43,19 +39,16 @@
       <div class="collapse navbar-collapse" id="main-navigation">
       <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="Acceuil.php">Accueil</a>
+            <a class="nav-link" href="Acceuilpersonnel.php">Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="toutparcourir.php">Tout Parcourir</a>
+            <a class="nav-link" href="contactpersonnel.php">Chat</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="recherche.php">Recherche</a>
+            <a class="nav-link" href="rendezvouspersonnel.php">Rendez-Vous</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="rendezvous.php">Rendez-Vous</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="votrecompte.php">Mon Compte</a>
+            <a class="nav-link" href="votrecomptepersonnel.php">Mon Compte</a>
           </li>
         </ul>
         <ul class="navbar-nav">
@@ -71,48 +64,61 @@
         </ul>
       </div>
     </nav>
-    <!--header a supprimer pour mettre en forme la page-->
-    <br><br><br><br>
-    <!--header a supprimer pour mettre en forme la page-->
-   <form class="container-fluid">
-    <div class="col-md-12">
-      <label for="inputEmail4" class="form-label">Email :</label>
-      <label for="inputEmail4" class="form-label"> <?php echo $_SESSION["emailclient"]?></label>
-     </div>
-    <div class="col-md-12">
-     <label for="inputCity" class="form-label">Nom : </label>
-      <label for="inputCity" class="form-label"><?php echo $_SESSION["nom"]?></label>
-    </div>
-    <div class="col-md-12">
-     <label for="inputCity" class="form-label">Prenon : </label>
-      <label for="inputCity" class="form-label"> <?php echo $_SESSION["prenom"]?></label>
-    </div>
-    <div class="col-md-12">
-     <label for="inputAddress" class="form-label">Addresse : </label>
-     <label for="inputAddress" class="form-label"><?php echo $_SESSION["adresse"]?></label>
-  </div>
-  <div class="col-md-12">
-     <label for="inputAddress" class="form-label">Ville : </label>
-     <label for="inputAddress" class="form-label"><?php echo $_SESSION["ville"]?></label>
-  </div>
-  <div class="col-md-12">
-     <label for="inputAddress" class="form-label">Code Postal : </label>
-     <label for="inputAddress" class="form-label"><?php echo $_SESSION["codepostal"]?></label>
-  </div>
-  <div class="col-md-12">
-     <label for="inputAddress" class="form-label">Pays : </label>
-     <label for="inputAddress" class="form-label"><?php echo $_SESSION["pays"]?></label>
-  </div>
-  <div class="col-md-12">
-      <label for="inputEmail4" class="form-label">Téléphone : </label>
-      <label for="inputEmail4" class="form-label"><?php echo $_SESSION["telephone"]?></label>
-     </div>
-    <div class="col-md-12">
-      <label for="inputEmail4" class="form-label">Carte Vitale : </label>
-      <label for="inputEmail4" class="form-label"><?php echo $_SESSION["cartevitale"]?></label>
-     </div>
-      
-      
+    <br /><br /><br /><br />
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Télephone</th>
+      <th scope="col">Salle</th>
+      <th scope="col">Date et heure</th>
+      <th scope="col">Annulation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+    //identifier votre BDD
+    $database = "omnessante";
+    //identifier votre serveur (localhost), utlisateur (root), mot de passe ("")
+    $db_handle = mysqli_connect('localhost', 'root', '');
+    $db_found = mysqli_select_db($db_handle, $database);
+    $sql = "";
+    $id = $_SESSION['idpersonnel'];
+    //si la BDD existe
+    if ($db_found) {
+        $sql = "SELECT rendezvous.idclient,rendezvous.date,rendezvous.creneau,client.nom,client.prenom,client.telephone FROM rendezvous, client WHERE idpersonnel='$id' AND rendezvous.idclient = client.idclient;";
+        $result = mysqli_query($db_handle, $sql);
+        if (mysqli_num_rows($result)==0) {
+            echo "Aucun rendez-vous";
+        } else {
+            while ($data = mysqli_fetch_assoc($result)) {
+                $idclient=$data["idclient"];
+                $nom=$data["nom"];
+                $prenom=$data["prenom"];
+                $telephone=$data["telephone"];
+                $salle=$_SESSION['salle'];
+                $date=$data["date"];
+                $heure=$data["creneau"];
+                $heure1=$heure+1;
+
+                echo '
+       <tr>
+        <td>'.$nom.'</td>
+        <td>'.$prenom.'</td>
+        <td>'.$telephone.'</td>
+        <td>'.$salle.'</td>
+        <td>'.$date.'  '.$heure.'h-'.$heure1.'h</td>
+        <td><form action="annulerdvpersonnel.php" method="post"><input type="hidden" name="idpersonnel" value='.$id.'><input type="hidden"  name="idclient" value='.$idclient.'><input type="hidden" name="date" value='.$date.'><input type="hidden" name="creneau" value='.$heure.'><button type="submit" class="btn btn-danger" data-mdb-ripple-color="dark" name="Valider">Annuler</button></form></td>
+      </tr>';
+            }
+        }
+    }
+    mysqli_close($db_handle);
+    ?>
+    
+  </tbody>
+</table>
     <!--footer-->
     <footer class="page-footer fixed-bottom">
       <div class="container">
@@ -144,6 +150,7 @@
               +33 01 03 02 05 04
             </p>
           </div>
+
         </div>
       </div>
     </footer>

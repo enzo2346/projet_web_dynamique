@@ -3,6 +3,7 @@
   if ($_SESSION['email'] == "") {
       header('Location: connexion.php?erreur=6');
   }
+  $_SESSION['page'] = "toutparcourir";
 ?>
 <!DOCTYPE html>
 <html>
@@ -96,7 +97,7 @@ if ($db_found) {
             $id=$data['idpersonnel'];
             $nom=$data['nom'];
             $prenom=$data['prenom'];
-            echo '<form action="cartedocteur.php" method="post"><button type="submit" name="id" value="'.$id.'" class="btn-link">'.$nom.' '.$prenom.'</button></form>';
+            echo '<form action="cartedocteur.php" method="post"><button type="submit" name="id" value="'.$id.'" class="btn btn-outline-primary">'.$nom.' '.$prenom.'</button></form>';
         }
     }
 }
@@ -128,7 +129,7 @@ if ($db_found) {
             $nom=$data['nom'];
             $prenom=$data['prenom'];
             $specialite=$data['specialite'];
-            echo '<form action="cartedocteur.php" method="post"><button type="submit" name="id" value="'.$id.'" class="btn-link">'.$specialite.' : '.$nom.' '.$prenom.'</button></form>';
+            echo '<form action="cartedocteur.php" method="post"><button type="submit" name="id" value="'.$id.'" class="btn btn-outline-primary">'.$specialite.' : '.$nom.' '.$prenom.'</button></form>';
         }
     }
 }
@@ -158,7 +159,7 @@ if ($db_found) {
         while ($data = mysqli_fetch_assoc($result)) {
             $id=$data['idpersonnel'];
             $specialite=$data['specialite'];
-            echo '<form action="cartedocteur.php" method="post"><button type="submit" name="id" value="'.$id.'" class="btn-link">'.$specialite.'</button></form>';
+            echo '<form action="cartedocteur.php" method="post"><button type="submit" name="id" value="'.$id.'" class="btn btn-outline-primary">'.$specialite.'</button></form>';
         }
     }
 }
