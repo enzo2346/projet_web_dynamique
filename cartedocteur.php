@@ -17,8 +17,6 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function () {
@@ -82,7 +80,7 @@ $id = isset($_POST["id"])? $_POST["id"] : "";
  
 //Si la BDD existe
 if ($db_found) {
-    $sql = "SELECT personnel.nom, personnel.prenom,personnel.specialite,personnel.salle,personnel.telephone,personnel.emailpersonnel,profil.photo FROM personnel,profil WHERE idpersonnel = ".$id." AND personnel.idprofil = profil.idprofil; ";
+    $sql = "SELECT personnel.nom, personnel.prenom,personnel.specialite,personnel.salle,personnel.telephone,personnel.emailpersonnel,profil.photo,profil.cv FROM personnel,profil WHERE idpersonnel = ".$id." AND personnel.idprofil = profil.idprofil; ";
     $result = mysqli_query($db_handle, $sql);
     if (mysqli_num_rows($result)==0) {
         echo "erreur requete";
@@ -96,6 +94,7 @@ if ($db_found) {
             $telephone=$data['telephone'];
             $email=$data['emailpersonnel'];
             $photo=$data['photo'];
+            $cv=$data['cv'];
         }
         echo "<h1>Dr.$nom $prenom<span><i>  Medecin $specialite</i> </span></h1>";
         echo "<div class= col-lg-12><img src=$photo alt='image' height='200' width='200'></div>";
@@ -125,8 +124,8 @@ if ($_SESSION['page']=="recherche") {
 }
 //echo '<form action="toutparcourir.php" method="post"><div class= col-lg-12><button type="submit" name="your_name" value="your_value" class="btn btn-primary">Retour</button></div></form><br>';
 echo '<form action="prendrerdv.php" method="post"><div class= col-lg-12><button type="submit" name="id" value="'.$id.'" class="btn btn-primary">Prendre un rendez-vous</button></div></form><br>';
-echo '<form action="communcation.php" method="post"><div class= col-lg-12><button type="submit" name="your_name" value="your_value" class="btn btn-primary">Communiquer avec le médecin</button></div></form><br>';
-echo '<form action="cv.php" method="post"><div class= col-lg-12><button type="submit" name="your_name" value="your_value" class="btn btn-primary">Voir son cv</button></div></form></div></br></br>';
+echo '<form action="chat.php" method="post" target= "_blank"><div class= col-lg-12><button type="submit" name="your_name" value="your_value" class="btn btn-primary">Communiquer avec le médecin</button></div></form><br>';
+echo '<form action="'.$cv.'" method="post" target= "_blank"><div class= col-lg-12><button type="submit" name="your_name" value="your_value" class="btn btn-primary">Voir son cv</button></div></form></div></br></br>';
 ?>
 
 <footer class="page-footer">

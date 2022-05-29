@@ -42,7 +42,7 @@
             <a class="nav-link" href="Acceuilpersonnel.php">Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contactpersonnel.php">Chat</a>
+            <a class="nav-link" href="chat.php" target= "_blank">Chat</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="rendezvouspersonnel.php">Rendez-Vous</a>
@@ -70,10 +70,10 @@
       <div class="description">
         <h1>Omnes Santé : La plus grande communauté de medecin en ligne</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-          interdum quam odio, quis placerat ante luctus eu. Sed aliquet dolor id
-          sapien rutrum, id vulputate quam iaculis. Suspendisse consectetur mi
-          id libero fringilla, in pharetra sem ullamcorper.
+        Reserver votre consulation chez un professionnel de santé en ligne<br>
+        Accédez rapidement aux disponibilités de tous vos professionnels de santé <br>
+        Prenez des décisions éclairées et adaptées à vos besoins de santé <br>
+        Gérez tout vos rendez-vous médicaux sur une même application 
         </p>
       </div>
     </header>

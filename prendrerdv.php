@@ -139,6 +139,9 @@ $max = $yday['yday']+6;
 
 $jour = array("Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche");
 $temp = date('w')-1;
+if ($temp<0) {
+    $temp = 6;
+}
 
 if ($db_found) {
     $sql = "SELECT `date`, `creneau`, `statuscreneau` FROM `calendrier` WHERE `idpersonnel`='$id' AND `date` BETWEEN '$date' AND '$date2'; ";

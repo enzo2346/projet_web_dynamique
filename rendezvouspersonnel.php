@@ -42,7 +42,7 @@
             <a class="nav-link" href="Acceuilpersonnel.php">Accueil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contactpersonnel.php">Chat</a>
+            <a class="nav-link" href="chat.php" target= "_blank">Chat</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="rendezvouspersonnel.php">Rendez-Vous</a>

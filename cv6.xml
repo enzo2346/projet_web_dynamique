@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="cv.xsl"?>
+<!DOCTYPE cave SYSTEM "cv.dtd">
+<cv>
+
+	<identite>
+		<nom>Labrie</nom>
+		<prenom>Moore</prenom>
+		<photo>images/icon6.jpg</photo>
+	</identite>
+
+	<mail>medaddictologie1@gmail.com</mail>
+	<telephone>06 22 22 22 01</telephone>
+	<specialite>Addictologie</specialite>
+
+	<experiences>
+		<experience>
+			<date>2018</date>
+			<etablissement>Omnes Santé</etablissement>
+		</experience>
+		<experience>
+			<date>2016</date>
+			<etablissement>Centre Hospitalier de Somain</etablissement>
+		</experience>
+	</experiences>
+
+	<formations>
+		<formation>
+			<date>2016</date>
+			<diplome>Diplôme Universitaire d'addictologie</diplome>
+			<etablissement> Faculté de Médecine de Londres</etablissement>
+		</formation>
+		<formation>
+			<date>2013</date>
+			<diplome>Diplôme d'Etat de Docteur en Médecine</diplome>
+			<etablissement> UFR Médecine de Lille</etablissement>
+		</formation>
+		<formation>
+			<date>2004</date>
+			<diplome>Baccalauréat Scientifique</diplome>
+			<etablissement>Lycée Edouard Branly Lille</etablissement>
+		</formation>
+	</formations>
+
+	<competences>
+		<competence>Patience</competence>
+		<competence>A l'écoute</competence>
+	</competences>
+
+</cv>

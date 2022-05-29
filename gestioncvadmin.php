@@ -64,8 +64,85 @@
         </ul>
       </div>
     </nav>
-     <!--footer-->
-     <footer class="page-footer fixed-bottom">
+    <br><br><br>
+    <form name="savefile" method="post" action="">
+        Nom du fichier: <input type="text" name="filename" value=""><br/>
+        <textarea rows="16" cols="100" name="textdata"></textarea><br/>
+        <input type="submit" name="submitsave" value="Sauver le fichier">
+</form>
+    <?php
+    if (isset($_POST)) {
+        if (@$_POST['submitsave'] == "Sauver le fichier"  && !empty($_POST['filename'])) {
+            if (!file_exists($_POST['filename'] . ".xml")) {
+                $file = tmpfile();
+            }
+            $file = fopen($_POST['filename'] . ".xml", "a+");
+            while (!feof($file)) {
+                @$old = $old . fgets($file);//. "<br />";
+            }
+            $text = $_POST["textdata"];
+            file_put_contents($_POST['filename'] . ".xml", $old . $text);
+            fclose($file);
+        }
+
+        if (@$_POST['submitopen'] == "Submit File Request") {
+            if (!file_exists($_POST['filename'] . ".xml")) {
+                exit("Error: File does not exist.");
+            }
+            $file = fopen($_POST['filename'] . ".xml", "r");
+            while (!feof($file)) {
+                echo fgets($file);//. "<br />";
+            }
+            fclose($file);
+        }
+    }
+    ?>
+    <br><br><br>
+    <h1>Modèle CV</h1>
+      <textarea name="cv" rows="50" cols="100" value=<?php echo '<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="cv.xsl"?>
+<!DOCTYPE cave SYSTEM "cv.dtd">
+<cv>
+	<identite>
+		<nom>Mercure</nom>
+		<prenom>Alain</prenom>
+		<photo>images/icon1.jpg</photo>
+	</identite>
+
+	<mail>medecing1@gmail.com</mail>
+	<telephone>06 11 11 11 01</telephone>
+	<specialite>Généraliste</specialite>
+
+	<experiences>
+		<experience>
+			<date>2018</date>
+			<etablissement>Omnes Santé</etablissement>
+		</experience>
+		<experience>
+			<date>2014</date>
+			<etablissement>Hôpital Maritime de Zuydcoote</etablissement>
+		</experience>
+	</experiences>
+
+	<formations>
+		<formation>
+			<date>2013</date>
+			<diplome>Diplôme dEtat de Docteur en Médecine</diplome>
+			<etablissement> UFR Médecine de Lille</etablissement>
+		</formation>
+		<formation>
+			<date>2004</date>
+			<diplome>Baccalauréat Scientifique</diplome>
+			<etablissement>Lycée Carnot Lille</etablissement>
+		</formation>
+	</formations>
+
+	<competences>
+		<competence>Formateur</competence>
+		<competence>A lécoute</competence>
+	</competences>
+</cv'?>></textarea><br>
+     <footer class="page-footer">
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-12 ml-auto">

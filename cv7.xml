@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="cv.xsl"?>
+<!DOCTYPE cave SYSTEM "cv.dtd">
+<cv>
+
+	<identite>
+		<nom>Lefebvre</nom>
+		<prenom>Auguste</prenom>
+		<photo>images/icon7.jpg</photo>
+	</identite>
+
+	<mail>medaddictologie2@gmail.com</mail>
+	<telephone>06 22 22 22 02</telephone>
+	<specialite>Addictologie</specialite>
+
+	<experiences>
+		<experience>
+			<date>2015</date>
+			<etablissement>Omnes Santé</etablissement>
+		</experience>
+		<experience>
+			<date>2010</date>
+			<etablissement>Centre Hospitalier de Bernes</etablissement>
+		</experience>
+	</experiences>
+
+	<formations>
+		<formation>
+			<date>2010</date>
+			<diplome>Diplôme Universitaire d'addictologie</diplome>
+			<etablissement> Faculté de Médecine de Bernes</etablissement>
+		</formation>
+		<formation>
+			<date>2007</date>
+			<diplome>Diplôme d'Etat de Docteur en Médecine</diplome>
+			<etablissement> UFR Médecine de Paris</etablissement>
+		</formation>
+		<formation>
+			<date>2004</date>
+			<diplome>Baccalauréat Scientifique</diplome>
+			<etablissement>Lycée Edouard Branly Nogent-sur-Marne</etablissement>
+		</formation>
+	</formations>
+
+	<competences>
+		<competence>Patience</competence>
+		<competence>A l'écoute</competence>
+	</competences>
+
+</cv>

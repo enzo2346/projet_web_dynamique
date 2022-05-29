@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="cv.xsl"?>
+<!DOCTYPE cave SYSTEM "cv.dtd">
+<cv>
+	<identite>
+		<nom>Couet</nom>
+		<prenom>David</prenom>
+		<photo>images/icon4.jpg</photo>
+	</identite>
+
+	<mail>meddermatologie2@gmail.com</mail>
+	<telephone>06 22 22 22 08</telephone>
+	<specialite>Dermatologie</specialite>
+
+	<experiences>
+		<experience>
+			<date>2018</date>
+			<etablissement>Omnes Santé</etablissement>
+		</experience>
+		<experience>
+			<date>2014</date>
+			<etablissement>Hôpital Maritime de Zuydcoote</etablissement>
+		</experience>
+	</experiences>
+
+	<formations>
+		<formation>
+			<date>2013</date>
+			<diplome>Diplôme d'Etat de Docteur en Médecine</diplome>
+			<etablissement> UFR Médecine de Lille</etablissement>
+		</formation>
+		<formation>
+			<date>2004</date>
+			<diplome>Baccalauréat Scientifique</diplome>
+			<etablissement>Lycée Carnot Lille</etablissement>
+		</formation>
+	</formations>
+
+	<competences>
+		<competence>Formateur</competence>
+		<competence>A l'écoute</competence>
+	</competences>
+</cv>
