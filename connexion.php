@@ -99,7 +99,7 @@
                   ?>
 
                   <a class="small text-muted" href="#!">Mot de passe oublié ? </a>
-                  <p class=" pb-lg-2" style="color: #393f81;">Vous n'avez pas de compte ? <a href="#!"
+                  <p class=" pb-lg-2" style="color: #393f81;">Vous n'avez pas de compte ? <a href="inscription.php"
                       style="color: #393f81;">Inscrivez-vous ici</a></p>
                 </form>
 
